@@ -2,6 +2,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+  background-color: lightgray;
 }
 
 textarea{
@@ -69,3 +70,10 @@ textarea{
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
+ header {
+   color: royalblue;
+ }
+ 
+ .lead {
+   margin-top: 25px;
+ }
