@@ -1,6 +1,6 @@
 body {
   font-family: 'Patrick Hand', cursive;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1;
   background-color: lightgray;
 }
@@ -76,6 +76,7 @@ textarea{
  
  .lead {
    margin-top: 25px;
+   font-size: 20px;
  }
 
  #footer {
@@ -91,4 +92,8 @@ textarea{
 #github {
     height: 35px;
     width: 35px;
+}
+
+h6 {
+  font-size: 20px;
 }
