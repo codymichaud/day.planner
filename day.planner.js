@@ -70,4 +70,24 @@ function intitializeLocalStorage() {
     localStorage.setItem("workday", JSON.stringify(workDay));
 };
 // saving to local storage
+function saveToLocalStorage(dayObj) {
+    localStorage.setItem("workDay", JSON.stringify(dayObj));
+};
+//Saves schedule to local storage
+function saveSchedule(hourString, val) {
+    if (!localStorage.getItem("workDay")) {
+        intitializeLocalStorage();
+    }
 
+    let workHours = JSON.parse(localStorage.getItem("workDay"));
+    workHours[hourString] = val
+
+    saveToLocalStorage(workHours);
+};
+//Allows user to see green for future and red for current
+function updateCalendarTasks(dayObject) {
+    $(".calendar-row").each(function (index) {
+        let res = $(this).children("div");
+        $(this).children("textarea").text(dayObject[res.text()]);
+    });
+};
