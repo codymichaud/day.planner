@@ -19,7 +19,7 @@ $(document).ready(function () {
     }
 })
 //Creating current time for user
-$("#currentDay h6").text(moment().format("YYYY MMMM") + ", " + moment().format("MMMM Do YYYY, h:mm:ss a"));
+$("#currentDay h6").text(moment().format("dddd") + ", " + moment().format("MMMM Do YYYY, h:mm:ss a"));
 
 
 
