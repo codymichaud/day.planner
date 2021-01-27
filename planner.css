@@ -34,7 +34,7 @@ textarea{
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid lightgray;;
+  border-top: 1px solid darkslategray;
 }
 
 .hour {
@@ -72,6 +72,7 @@ textarea{
 }
  header {
    color: royalblue;
+   background-color: darkslategray;
  }
  
  .lead {
@@ -87,8 +88,6 @@ textarea{
   background-color: #000000;
   color: white;
   text-align: center;
-  margin-bottom: 0px;
-
 }
 
 #github {
