@@ -1,4 +1,6 @@
 let workDay = {
+    "6 AM": "",
+    "7 AM": "",
     "8 AM": "",
     "9 AM": "",
     "10 AM": "",
@@ -9,6 +11,10 @@ let workDay = {
     "3 PM": "",
     "4 PM": "",
     "5 PM": "",
+    "6 PM": "",
+    "7 PM": "",
+    "8 PM": "",
+    "9 PM": ""
 };
 //Storing work day tasks
 $(document).ready(function () {
@@ -51,6 +57,8 @@ $("button").click(function () {
 //Function to pull hour number for past, future, and present classes
 function hourNumberFromHourString(hourString) {
     switch (hourString) {
+        case "6 AM": return 6;
+        case "7 AM": return 7;
         case "8 AM": return 8;
         case "9 AM": return 9;
         case "10 AM": return 10;
@@ -61,6 +69,10 @@ function hourNumberFromHourString(hourString) {
         case "3 PM": return 15;
         case "4 PM": return 16;
         case "5 PM": return 17;
+        case "6 PM": return 18;
+        case "7 PM": return 19;
+        case "8 PM": return 20;
+        case "9 PM": return 21;
     }
 };
 //Setting local storage
@@ -73,8 +85,8 @@ function intitializeLocalStorage() {
     localStorage.setItem("workday", JSON.stringify(workDay));
 };
 // saving to local storage
-function saveToLocalStorage(dayObj) {
-    localStorage.setItem("workDay", JSON.stringify(dayObj));
+function saveToLocalStorage(dayObject) {
+    localStorage.setItem("workDay", JSON.stringify(dayObject));
 };
 //Saves schedule to local storage
 function saveSchedule(hourString, val) {
@@ -83,7 +95,7 @@ function saveSchedule(hourString, val) {
     }
 
     let workHours = JSON.parse(localStorage.getItem("workDay"));
-    workHours[hourString] = val
+    workHours[timeString] = val
 
     saveToLocalStorage(workHours);
 };
