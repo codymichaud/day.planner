@@ -34,7 +34,7 @@ textarea{
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid darkslategray;
+  border-top: 1px solid lightcoral;
 }
 
 .hour {
@@ -72,7 +72,7 @@ textarea{
 }
  header {
    color: royalblue;
-   background-color: darkslategray;
+   background-color: lightcoral;
  }
  
  .lead {
