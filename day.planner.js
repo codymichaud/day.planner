@@ -28,16 +28,16 @@ $(document).ready(function () {
 $("#currentDay h6").text(moment().format("dddd") + ", " + moment().format("MMMM Do YYYY, h:mm:ss a"));
 
 
-
 //Creating past,future and present classes for planner
 let counter = 1;
 for (const property in workDay) {
     let textEntry = "#text-entry" + counter;
     $(textEntry).text(workDay[property]);
     let timeId = "#time" + counter;
-    let presentHour = moment().hour();
     let timeString = $(timeId).text();
     let timeNumber = hourNumberFromHourString(timeString);
+    let presentHour = moment().hour();
+
     if (timeNumber < presentHour) {
         $(textEntry).addClass("past-hour");
     } else if (timeNumber > presentHour) {
@@ -47,6 +47,11 @@ for (const property in workDay) {
     }
     counter++;
 }
+
+
+
+
+
 
 $("button").click(function () {
     value = $(this).siblings("textarea").val();
@@ -90,12 +95,16 @@ function saveToLocalStorage(dayObject) {
 };
 //Saves schedule to local storage
 function saveSchedule(hourString, val) {
+    let timeId = "#time" + counter;
+    let timeString = $(timeId).text();
+    let timeNumber = hourNumberFromHourString(timeString);
+    let presentHour = moment().hour();
     if (!localStorage.getItem("workDay")) {
         intitializeLocalStorage();
     }
 
     let workHours = JSON.parse(localStorage.getItem("workDay"));
-    workHours[timeString] = val
+
 
     saveToLocalStorage(workHours);
 };
