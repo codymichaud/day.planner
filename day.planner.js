@@ -1,4 +1,4 @@
-let workDay = {
+const dayTime = {
     "6 AM": "",
     "7 AM": "",
     "8 AM": "",
@@ -18,10 +18,10 @@ let workDay = {
 };
 //Storing work day tasks
 $(document).ready(function () {
-    if (!localStorage.getItem("workDay")) {
-        updateCalendarTasks(workDay);
+    if (!localStorage.getItem("dayTime")) {
+        updateCalendarTasks(dayTime);
     } else {
-        updateCalendarTasks(JSON.parse(localStorage.getItem("workDay")));
+        updateCalendarTasks(JSON.parse(localStorage.getItem("dayTime")));
     }
 })
 //Creating current time for user
@@ -30,17 +30,17 @@ $("#currentDay h6").text(moment().format("dddd") + ", " + moment().format("MMMM 
 
 //Creating past,future and present classes for planner
 let counter = 1;
-for (const property in workDay) {
+for (const property in dayTime) {
     let textEntry = "#text-entry" + counter;
-    $(textEntry).text(workDay[property]);
+    $(textEntry).text(dayTime[property]);
     let timeId = "#time" + counter;
     let timeString = $(timeId).text();
     let timeNumber = hourNumberFromHourString(timeString);
-    let presentHour = moment().hour();
+    let currentHour = moment().hour();
 
-    if (timeNumber < presentHour) {
+    if (timeNumber < currentHour) {
         $(textEntry).addClass("past-hour");
-    } else if (timeNumber > presentHour) {
+    } else if (timeNumber > currentHour) {
         $(textEntry).addClass("future-hour");
     } else {
         $(textEntry).addClass("present-hour");
@@ -82,28 +82,28 @@ function hourNumberFromHourString(hourString) {
 };
 //Setting local storage
 function loadCorrectDataset() {
-    result = localStorage.getItem("workDay")
-    return (result ? result : workDay);
+    result = localStorage.getItem("dayTime")
+    return (result ? result : dayTime);
 };
 //Intitializing local storage
 function intitializeLocalStorage() {
-    localStorage.setItem("workday", JSON.stringify(workDay));
+    localStorage.setItem("dayTime", JSON.stringify(dayTime));
 };
 // saving to local storage
 function saveToLocalStorage(dayObject) {
-    localStorage.setItem("workDay", JSON.stringify(dayObject));
+    localStorage.setItem("dayTime", JSON.stringify(dayObject));
 };
 //Saves schedule to local storage
 function saveSchedule(hourString, val) {
     let timeId = "#time" + counter;
     let timeString = $(timeId).text();
     let timeNumber = hourNumberFromHourString(timeString);
-    let presentHour = moment().hour();
-    if (!localStorage.getItem("workDay")) {
+    let currentHour = moment().hour();
+    if (!localStorage.getItem("dayTime")) {
         intitializeLocalStorage();
     }
 
-    let workHours = JSON.parse(localStorage.getItem("workDay"));
+    let workHours = JSON.parse(localStorage.getItem("dayTime"));
 
 
     saveToLocalStorage(workHours);
